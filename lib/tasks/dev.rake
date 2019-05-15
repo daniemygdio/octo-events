@@ -46,15 +46,15 @@ namespace :dev do
   task add_events: :environment do
     events = [
       {
-        action: "opened",
+        github_action: "opened",
         issue: Issue.all.sample
       },
       {
-        action: "closed",
+        github_action: "closed",
         issue: Issue.all.sample
       },
       {
-        action: "opened",
+        github_action: "opened",
         issue: Issue.all.sample
       }
     ]
