@@ -47,12 +47,15 @@ namespace :dev do
     events = [
       {
         github_action: "opened",
+        issue: Issue.all.sample
       },
       {
         github_action: "closed",
+        issue: Issue.all.sample
       },
       {
         github_action: "opened",
+        issue: Issue.all.sample
       }
     ]
 

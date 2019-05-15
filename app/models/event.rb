@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-    attr_accessor :github_action, :issue
-    belongs_to :issues, foreign_key: "issue_id", optional: true
+    attr_accessor :github_action
+    belongs_to :issue, optional: true
 end
