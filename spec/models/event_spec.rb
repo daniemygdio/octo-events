@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should create an event succesfully" do
+    event = Event.new
+    event.github_action = "open"
+
+    expect(event.github_action).to eq("open")
+  end
 end
