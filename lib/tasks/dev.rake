@@ -57,7 +57,7 @@ namespace :dev do
     ]
 
     events.each do |event|
-      Event.create!(event)
+      Event.find_or_create_by!(event)
     end
   end
 end

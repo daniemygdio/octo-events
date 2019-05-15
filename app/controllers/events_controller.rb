@@ -10,15 +10,13 @@ class EventsController < ApplicationController
     @issue = Issue.new(issue_params)
     @event = Event.new()
     @event.github_action = request.request_parameters['action']
-
-    respond_to do |format|
-      if @event.save 
-        format.html { redirect_to @event, notice: 'Event was succesfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.json { render json: @coin.errors, status: :unprocessable_entity }
-      end
+    
+    if @issue.save && @event.save
+      render json: { status: :created, location: @events }
+    else
+      render json: { status: :unprocessable_entity }
     end
+  
   end
 
   def show
