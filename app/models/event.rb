@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-    attr_accessor :action, :issue_id
-    belongs_to :issue, class_name: "issue", foreign_key: "issue_id"
+    attr_accessor :action, :issue
+    belongs_to :issue, foreign_key: "issue_id"
 end

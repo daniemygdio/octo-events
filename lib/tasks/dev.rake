@@ -1,4 +1,5 @@
 require 'tty-spinner'
+
 namespace :dev do
   desc "Setup development environment"
   task setup: :environment do
