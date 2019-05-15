@@ -47,20 +47,17 @@ namespace :dev do
     events = [
       {
         github_action: "opened",
-        issue: Issue.all.sample
       },
       {
         github_action: "closed",
-        issue: Issue.all.sample
       },
       {
         github_action: "opened",
-        issue: Issue.all.sample
       }
     ]
 
     events.each do |event|
-      Event.find_or_create_by!(event)
+      Event.create!(event)
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_130838) do
+ActiveRecord::Schema.define(version: 2019_05_14_185536) do
 
   create_table "events", force: :cascade do |t|
     t.string "github_action"
