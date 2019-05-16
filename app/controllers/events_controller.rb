@@ -7,11 +7,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    @issue = Issue.new(issue_params)
-    @event = Event.new()
-    @event.github_action = request.request_parameters['action']
+    @issue = Issue.find_or_create_by issue_params
+    @issue.events.create event_params
     
-    if @issue.save && @event.save
+    if @issue.save
       render json: { status: :created, location: @events }
     else
       render json: { status: :unprocessable_entity }
@@ -24,7 +23,7 @@ class EventsController < ApplicationController
 
   private 
     def event_params
-      request.request_parameters['action']
+      { github_action: params.require(:action) } 
     end
 
     def issue_params
