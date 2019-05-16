@@ -22,12 +22,4 @@ RSpec.describe EventsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe "GET #Events" do
-    it "returns http success" do
-      get :Events
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end
