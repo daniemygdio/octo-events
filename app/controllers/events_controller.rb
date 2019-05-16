@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  wrap_parameters [:json]
   skip_before_action :verify_authenticity_token
 
   def index
