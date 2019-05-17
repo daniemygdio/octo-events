@@ -4,7 +4,7 @@
 <table>
   <thead>
     <tr>
-        <% number_of_events_by_action.each do | key, value | %>
+        <% number_of_events_by_action(@events).each do | key, value | %>
         <th><%= key %></th>
         <% end %>
     </tr>
@@ -12,7 +12,7 @@
 
   <tbody>
       <tr>
-        <% number_of_events_by_action.each do | key, value | %>
+        <% number_of_events_by_action(@events).each do | key, value | %>
           <td><%= value %></td>
         <% end %>
       </tr>

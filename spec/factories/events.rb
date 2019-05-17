@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :event do
-    github_action { FFaker::Lorem.word }
-    
+    github_action { %w[opened closed] }
   end
 end
