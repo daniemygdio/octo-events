@@ -10,10 +10,19 @@ RSpec.describe "Events", type: :request do
 
   describe "POST /events" do
     context "when valid parameters" do
-      let(:github_action) { %w[opened closed].sample }
-      
+      let(:valid_params) { 
+        {
+          github_action: %w[opened closed].sample,
+          issue: {
+            url: FFaker::Internet.http_url,
+            number: FFaker::Random.rand(100..999)
+          }
+        }
+      }
+
       it "creates successfully" do
-        post events_path, params: { action: github_action, issue: { url: "fake.url", number: 123 } } 
+        post events_path, params: valid_params
+        
         expect(response).to have_http_status(200)
       end
     end
