@@ -13,13 +13,15 @@ require 'rails_helper'
 RSpec.describe EventsHelper, type: :helper do
   describe "number_of_events_by_action" do
     context "when there are events available" do
-      it "should return the number of events per action" do
-        github_action_opened = "opened"
-        Event.create({ github_action: github_action_opened })
-        Event.create({ github_action: github_action_opened })
+      let(:github_action_opened) { "opened" }
 
-        qry = number_of_events_by_action(Event.all)[github_action_opened]
-        expect(qry).to eq(2)
+      before do
+        Event.create({ github_action: github_action_opened })
+        Event.create({ github_action: github_action_opened })
+      end
+
+      it "should return the number of events per action" do
+        expect(number_of_events_by_action(Event.all)[github_action_opened]).to eq(2)
       end
     end
   end
