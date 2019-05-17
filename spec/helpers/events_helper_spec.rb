@@ -24,5 +24,11 @@ RSpec.describe EventsHelper, type: :helper do
         expect(number_of_events_by_action(Event.all)[github_action_opened]).to eq(2)
       end
     end
+
+    context "when there are no events available" do
+      it "should return nil" do
+        expect(number_of_events_by_action(Event.all)).to be_empty
+      end
+    end
   end
 end
