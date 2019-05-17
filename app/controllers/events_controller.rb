@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
   private 
     def event_params
-      { github_action: params.require(:action) } 
+      { github_action: request.request_parameters['action'] } 
     end
 
     def issue_params
