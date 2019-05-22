@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Events", type: :request do
   describe "GET /events" do
-    it "works! (now write some real specs)" do
+    it "works!" do
       get events_index_path
       expect(response).to have_http_status(200)
     end
@@ -20,7 +20,7 @@ RSpec.describe "Events", type: :request do
         }
       }
 
-      it "creates successfully" do
+      it "returns success" do
         post events_path, params: valid_params
         
         expect(response).to have_http_status(200)
