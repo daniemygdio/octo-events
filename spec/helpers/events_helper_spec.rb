@@ -14,21 +14,24 @@ RSpec.describe EventsHelper, type: :helper do
   describe "number_of_events_by_action" do
     context "when there are events available" do
       let(:github_action_opened) { "opened" }
+      let(:github_action_closed) { "closed" }
 
       before do
         Event.create({ github_action: github_action_opened })
         Event.create({ github_action: github_action_opened })
       end
 
+      it { expect(number_of_events_by_action(Event.all)[github_action_opened]).to eq(2) }
+
       it "should return the number of events per action" do
+        Event.create({ github_action: github_action_closed })
         expect(number_of_events_by_action(Event.all)[github_action_opened]).to eq(2)
+        expect(number_of_events_by_action(Event.all)[github_action_closed]).to eq(1)
       end
     end
 
     context "when there are no events available" do
-      it "should return nil" do
-        expect(number_of_events_by_action(Event.all)).to be_empty
-      end
+      it { expect(number_of_events_by_action(Event.all)).to be_empty }
     end
   end
 end
