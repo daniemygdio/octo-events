@@ -7,15 +7,11 @@ RSpec.describe Event, type: :model do
     context "when valid parameter" do
       github_action = %w[opened closed].sample
 
-      it "returns valid Event" do
-        expect(Event.new github_action: github_action).to be_valid
-      end
+      it { expect(Event.new github_action: github_action).to be_valid }
     end
   
     context "when invalid empty parameter" do
-      it "should not create Event" do
-        expect(Event.new).to_not be_valid
-      end  
+      it { expect(Event.new).to_not be_valid }
     end
   end
 end

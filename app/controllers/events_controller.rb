@@ -6,18 +6,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    @issue = Issue.find_or_create_by issue_params
-    @issue.events.create event_params
+    @issue = Issue.find_or_initialize_by issue_params
+    @issue.events.build event_params
     
     if @issue.save
-      render json: { status: :created, location: @events }
+      render json: { status: :created }
     else
       render json: { status: :unprocessable_entity }
     end
-  
-  end
-
-  def show
   end
 
   private 
